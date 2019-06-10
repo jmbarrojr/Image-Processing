@@ -33,8 +33,8 @@ for n=1:2:N-1
     % Sub_A = MinMaxNormalization(Sub_A,Win);
     % Sub_B = MinMaxNormalization(Sub_B,Win);
     
-    imwrite(Sub_A,[savepath filesep files(n).name],'Compression','none')
-    imwrite(Sub_B,[savepath filesep files(n+1).name],'Compression','none')
+    imwrite(Sub_A,[savepath filesep 'Pre_' files(n).name],'Compression','none')
+    imwrite(Sub_B,[savepath filesep 'Pre_' files(n+1).name],'Compression','none')
     
 end
 
