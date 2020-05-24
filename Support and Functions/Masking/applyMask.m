@@ -6,8 +6,6 @@ function img = applyMask(img,mask)
 % OIST - 2020
 % Julio Barros
 %
-% see also: creatMask
+% see also: immultiply
 
-mask = createMask(mask);
-mask = mask == 0;
-img = img .* uint8(mask);
+img = immultiply(img,mask);
