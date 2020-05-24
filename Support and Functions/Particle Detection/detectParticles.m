@@ -35,14 +35,3 @@ stats = regionprops(labeledImage,'Centroid','MajorAxisLength','MinorAxisLength')
 % Get centers and radii from detected partcicles
 [centers,radii] = getParticlesFromStat(stats);
 end
-%--------------------------------------------------------------------------
-function [centers,radii] = getParticlesFromStat(stats)
-N = length(stats);
-centers = zeros(N,2);
-radii = zeros(N,1);
-for n=1:N
-    centers(n,:) = stats(n).Centroid;
-    diameters = mean([stats(n).MajorAxisLength stats(n).MinorAxisLength],2);
-    radii(n) = diameters/2;
-end
-end
