@@ -1,32 +1,26 @@
-function B = SlidingMinFilter(A,Win)
+function B = SlidingMinFilter(A,kernel,type)
+%SLIDINGMINFILTER This function filter the image with a sliding max
 %
-% VERSION 2
-%Apad = padarray(A,[Win/2 Win/2]);
+% B = SlidingMinFilter(A,kernel,type)
+%
+% OPTIONAL INPUTS: kernel (default = 3)
+%                  type = 'disk'(default), 'square', but can be anything
+%                  defined in strel
+%
+% Julio Barros
+% see also: strel, imerode
 
-% MATLAB WAY
-se = strel('disk',floor(Win/2));
+% Check input variables
+if ~exist('kernel','var')
+    kernel = 3;
+end
+if ~exist('type','var')
+    type = 'disk';
+end
+
+if strcmp(type,'disk')
+    se = strel(type,floor(kernel/2));
+else
+    se = strel(type,kernel);
+end
 B = imerode(A,se);
-% B = imerode(A,true(Win));
-
-%C = zeros(size(A));
-%C = B(Win/2:end-(Win/2+1),Win/2:end-(Win/2+1));
-
-% % JULIO'S SHITY WAY
-% BJ = zeros(size(A));
-% 
-% x = [1:Win]';
-% y = [1:Win]';
-% 
-% for i= 1:size(Apad,1)-Win
-%     for j=1:size(Apad,2)-Win
-%       
-%        %VECTORIZED METHOD 
-%        window = Apad(i+x-1,j+y-1);
-% 
-%        %FIND THE MINIMUM VALUE IN THE SELECTED WINDOW
-%         BJ(i,j) = min(window(:));
-% 
-%     end
-% end
-
-% CJ = BJ;%(Win/2+1:end-Win/2+1,Win/2+1:end-Win/2+1);
