@@ -8,7 +8,11 @@ function [centers,radii,stats,grayImage] = detectParticles(img,thr,avgBack,mask)
 % see also: applyMask, regionprops
 
 % Convert image to gray
-grayImage = rgb2gray(img);
+if size(img,3) == 3
+    grayImage = rgb2gray(img);
+else
+    grayImage = img;
+end
 
 % Apply mask, if any
 if exist('mask','var') && ~isempty(mask)
