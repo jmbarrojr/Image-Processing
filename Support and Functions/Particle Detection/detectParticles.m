@@ -1,4 +1,4 @@
-function [centers,radii,stats,grayImage] = detectParticles(img,thr,avgBack,mask)
+function [centers,radii,stats,grayImage,binaryImage] = detectParticles(img,thr,avgBack,mask)
 %DETECTPARTICLES
 % This function utilizes simple buit-in MATLAB functions to detect objetcs
 % (usually particles) in a given image
@@ -34,7 +34,8 @@ CC = bwconncomp(binaryImage,8);
 labeledImage = labelmatrix(CC);
 
 % Detect particles in frame
-stats = regionprops(labeledImage,'Centroid','MajorAxisLength','MinorAxisLength');
+stats = regionprops(labeledImage,grayImage,'Centroid','MajorAxisLength','MinorAxisLength',...
+    'MaxIntensity','MinIntensity','WeightedCentroid');
 
 % Get centers and radii from detected partcicles
 [centers,radii] = getParticlesFromStat(stats);
