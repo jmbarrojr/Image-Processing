@@ -1,4 +1,4 @@
-function [centers,radii,stats,grayImage,binaryImage] = detectParticles(img,thr,avgBack,mask)
+function [centers,radii,stats,grayImage,binaryImage] = detectParticles(img,thr,avgBack,mask,filterImg)
 %DETECTPARTICLES
 % This function utilizes simple buit-in MATLAB functions to detect objetcs
 % (usually particles) in a given image
@@ -24,8 +24,24 @@ if exist('avgBack','var') && ~isempty(avgBack)
     grayImage = grayImage - avgBack;
 end
 
+if filterImg == true
+    % Dialate the image
+    grayImage = SlidingMaxFilter(grayImage);
+end
+
 % Binarize the image
 binaryImage = grayImage > thr;
+
+if filterImg == true
+    % Erode to get back to the same size
+    binaryImage = SlidingMinFilter(binaryImage);
+
+    % Remove any 1 pixel "dust" or noise
+    binaryImage = medfilt2(binaryImage,[3 3]);
+end
+
+% Fill holes, if any
+binaryImage = imfill(binaryImage,8,'holes');
 
 % Create connection regions
 CC = bwconncomp(binaryImage,8);
