@@ -8,7 +8,7 @@ clear
 
 addpath(genpath(['.' filesep 'Support and Functions']))
 
-path = uigetdir('Choose the direction which contains the images');
+path = uigetdir('Choose the directory which contains the images');
 
 savepath = [path filesep 'Pre_Processed'];
 if ~isfolder(savepath)
