@@ -1,4 +1,6 @@
 .DS_Store
 *.avi
 *.mat
+.DS_store
+*.m~
 *.txt
