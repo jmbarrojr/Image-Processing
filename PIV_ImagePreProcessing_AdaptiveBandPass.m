@@ -1,4 +1,4 @@
-%PIV_IMAGEPREPROCESSING Legacy wrapper for the Sliding Min-Max pipeline.
+%PIV_IMAGEPREPROCESSING_ADAPTIVEBANDPASS Legacy wrapper for adaptive band-pass workflow.
 %
 % Use PIVPreProcess.m for the unified interactive workflow.
 
@@ -6,9 +6,9 @@ baseDir = fileparts(mfilename('fullpath'));
 addpath(genpath(fullfile(baseDir, 'functions')));
 addpath(genpath(fullfile(baseDir, 'pipelines')));
 
-inputDir = uigetdir('', 'Choose the directory which contains the images');
+inputDir = uigetdir('', 'Select the directory where the images are');
 if isequal(inputDir, 0)
     error('No input directory selected.');
 end
 
-RunSlidingMinMaxPipeline(inputDir, fullfile(inputDir, 'Pre_Processed'));
+RunAdaptiveBandPassPipeline(inputDir, fullfile(inputDir, 'Pre_Processed'));
