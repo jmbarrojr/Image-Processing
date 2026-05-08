@@ -12,6 +12,7 @@ FolResults = fullfile(path, 'Pre_Processed');
 mkdir(FolResults);
 
 N = min(length(files), 200);
+backNoise = 1; % Legacy empirical noise floor for minmax-based subtraction
 
 tstart_p = tic;
 disp('Calculating background subtraction')
@@ -25,7 +26,7 @@ parfor i = 1 : floor(N/2)
     LA = imread(fullfile(path, ImgA));
     LB = imread(fullfile(path, ImgB));
 
-    [Sub_rLA, Sub_rLB] = BackSubNorm2010(LA, LB, Win, 1);
+    [Sub_rLA, Sub_rLB] = BackSubNorm2010(LA, LB, Win, backNoise);
 
     imwrite(Sub_rLA, fullfile(FolResults, ['SubNorm_' ImgA]), 'TIFF', 'Compression', 'none')
     imwrite(Sub_rLB, fullfile(FolResults, ['SubNorm_' ImgB]), 'TIFF', 'Compression', 'none')

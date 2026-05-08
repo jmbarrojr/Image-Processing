@@ -1,5 +1,5 @@
 function B = SlidingMinFilter(A,kernel,type)
-%SLIDINGMINFILTER This function filter the image with a sliding max
+%SLIDINGMINFILTER This function filter the image with a sliding min
 %
 % B = SlidingMinFilter(A,kernel,type)
 %

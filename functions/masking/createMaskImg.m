@@ -1,5 +1,5 @@
 function mask = createMaskImg(img)
-%CREATMASKIMG
+%CREATEMASKIMG
 %
 % mask = createMaskImg(img)
 % 

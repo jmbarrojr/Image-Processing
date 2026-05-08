@@ -1,5 +1,5 @@
 function summary = RunAdaptiveBandPassPipeline(inputDir, outputDir, opts)
-%RUNADAPTIVEBANDPASPIPELINE Applies CLAHE and optional band-pass filtering.
+%RunAdaptiveBandPassPipeline Applies CLAHE and optional band-pass filtering.
 %
 % summary = RunAdaptiveBandPassPipeline(inputDir, outputDir, opts)
 %
@@ -70,7 +70,8 @@ for n = 1:numel(files)
 
     if opts.applyBandPass
         B = bpass(B, opts.lnoise, opts.lobject);
-        B = B ./ max(B(:), eps);
+        den = max(max(B(:)), eps);
+        B = B ./ den;
     end
 
     if isa(A, 'uint8')

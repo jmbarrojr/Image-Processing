@@ -4,8 +4,7 @@ A MATLAB toolkit for PIV/PTV image pre-processing, including normalization, adap
 
 ## Requirements
 
-- MATLAB R2019b+ recommended
-- MATLAB R2014b+ minimum for modern parallel APIs (`parpool`)
+- MATLAB R2019b+ required (baseline used for this refactor and test scaffolding compatibility)
 - Image Processing Toolbox (required)
 - Parallel Computing Toolbox (optional)
 - Image Acquisition Toolbox (optional, for video workflows)

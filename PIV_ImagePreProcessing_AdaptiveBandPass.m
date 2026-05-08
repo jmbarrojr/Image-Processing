@@ -1,4 +1,4 @@
-%PIV_IMAGEPREPROCESSING_ADAPTIVEBANDPASS Legacy wrapper for adaptive band-pass workflow.
+%PIV_ImagePreProcessing_AdaptiveBandPass Legacy wrapper for adaptive band-pass workflow.
 %
 % Use PIVPreProcess.m for the unified interactive workflow.
 

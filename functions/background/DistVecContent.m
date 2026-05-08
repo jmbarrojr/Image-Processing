@@ -5,7 +5,7 @@ function [DistVec] = DistVecContent(cores, vecContent)
 %
 % Note: For distributed execution, open a parallel pool with parpool first.
 %
-% Author: Julio Barros - UIUC
+% Author: Julio Barros - UIUC (historical source)
 
 validateattributes(cores, {'numeric'}, {'scalar','integer','positive'}, mfilename, 'cores');
 

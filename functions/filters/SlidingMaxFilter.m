@@ -8,7 +8,7 @@ function B = SlidingMaxFilter(A,kernel,type)
 %                  defined in strel
 %
 % Julio Barros
-% see also: strel, imdialate
+% see also: strel, imdilate
 
 % Check input variables
 if ~exist('kernel','var')

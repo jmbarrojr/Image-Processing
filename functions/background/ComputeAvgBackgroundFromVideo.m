@@ -9,7 +9,7 @@ function avgBack = ComputeAvgBackgroundFromVideo(vObj)
 % see also: VideoReader
 
 avgBack = zeros(vObj.Height,vObj.Width);
-N =vObj.NumFrames;
+N = vObj.NumFrames;
 f = waitbar(0,'Computing Average Background');
 for n=1:N
     frame = read(vObj,n);

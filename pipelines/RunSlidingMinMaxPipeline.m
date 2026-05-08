@@ -69,8 +69,8 @@ for n = 1:2:N-1
     Asmin = SlidingMinFilter(A, opts.windowSize);
     Bsmin = SlidingMinFilter(B, opts.windowSize);
 
-    Aa = double(A) - double(Asmin);
-    Bb = double(B) - double(Bsmin);
+    Aa = cast(max(double(A) - double(Asmin), 0), class(A));
+    Bb = cast(max(double(B) - double(Bsmin), 0), class(B));
 
     Anorm = MinMaxNormalization(Aa, opts.normWindow);
     Bnorm = MinMaxNormalization(Bb, opts.normWindow);

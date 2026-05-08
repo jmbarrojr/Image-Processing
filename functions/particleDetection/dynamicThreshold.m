@@ -8,8 +8,8 @@ function [Apar,particle_list] = dynamicThreshold(A,Ithr,Cthr,win,type)
 % INPUT: A    - Image to be segmented
 %        Ithr - background noise threshold value
 %        Cthr - Contrast ratio for the detect particles (0.2 is good for 
-%               cleannumber for 8-bit images). Increase the value if background
-%               noise is being captured or to make parciles smaler.
+%               clean number for 8-bit images). Increase the value if background
+%               noise is being captured or to make particles smaller.
 %  
 % OPTIONAL INPUT: 
 %        win  - Size of the sliding-max filter (default is 3)
@@ -31,7 +31,7 @@ end
 [Sx,Sy] = size(A);
 
 % Apply a sliding-max filter to detect the brightest spots of all particles
-% behond Ithr value
+% beyond Ithr value
 Amax = SlidingMaxFilter(A,win);
 Amax(Amax<Ithr) = 0;
 
